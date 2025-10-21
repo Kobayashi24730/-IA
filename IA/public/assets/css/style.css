@@ -1,0 +1,239 @@
+/* ===============================
+   ESTILO GERAL
+=================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  background-color: #f3f4f6;
+  color: #222;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   MENU LATERAL
+=================================*/
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #0b5d3e, #073c28);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 30px 20px;
+  position: fixed;
+  height: 100%;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar .logo h1 {
+  font-size: 1.8em;
+  color: #a8f0c1;
+}
+
+.sidebar .logo p {
+  font-size: 0.9em;
+  color: #d1ffd9;
+  margin-bottom: 25px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #d1ffd9;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* EFEITO AO PASSAR O MOUSE */
+.sidebar ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ITEM CLICADO (ATIVO) */
+.sidebar ul li a.clicado {
+  background-color: #0f7d51;
+  color: #fff;
+}
+
+/* ===============================
+   CONTEÚDO PRINCIPAL
+=================================*/
+.content {
+  display: none;
+  margin-left: 250px;
+  padding: 50px 40px;
+  flex: 1;
+  transition: margin 0.3s ease;
+}
+
+.hero {
+  background: #e6f8ed;
+  border-left: 5px solid #0b5d3e;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.hero h2 {
+  color: #0b5d3e;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1em;
+  color: #333;
+}
+
+.form-section h3 {
+  margin-bottom: 15px;
+  color: #0b5d3e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  font-weight: 500;
+}
+
+form textarea {
+  resize: none;
+  height: 120px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95em;
+}
+
+form button {
+  background: #0b5d3e;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: #0f7d51;
+  transform: scale(1.03);
+}
+
+/* ===============================
+   RESULTADO
+=================================*/
+.output {
+  margin-top: 25px;
+  background: #f9fff9;
+  border: 1px solid #b2e2b2;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.output h4 {
+  color: #0b5d3e;
+  margin-bottom: 10px;
+
+}
+
+/* ===============================
+   TROCA DE SEÇÕES
+=================================*/
+.content {
+  display: none;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+}
+
+.content.ativo {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Link ativo no menu */
+.sidebar a.clicado {
+  background-color: #0f7d51;
+  color: #fff;
+  border-radius: 6px;
+}
+
+
+/* ===============================
+   RESPONSIVIDADE
+=================================*/
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 25px;
+  }
+
+  .hero h2 {
+    font-size: 1.4em;
+  }
+
+  form textarea {
+    height: 100px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar ul li a {
+    font-size: 0.9em;
+    padding: 6px 8px;
+  }
+
+  .hero h2 {
+    font-size: 1.2em;
+  }
+
+  form button {
+    font-size: 0.9em;
+  }
+}
