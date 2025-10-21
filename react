@@ -1,0 +1,74 @@
+import { useState } from 'react';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <h1>Cadastro</h1>
+      <Register />
+    </div>
+  );
+}
+
+function Register() {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const data = { email, senha };
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    try {
+      const resposta = await fetch("http://localhost/seu-script.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const res = await resposta.json();
+
+      if (res.response) {
+        alert('Cadastro feito com sucesso!');
+      } else {
+        alert('Erro: ' + (res.message || 'Erro desconhecido'));
+      }
+
+    } catch (erro) {
+      alert("Mensagem de erro: " + erro.message);
+    }
+  };
+
+  return (
+    <form onSubmit={submitForm}>
+      <div>
+        <input
+          type="email"
+          placeholder="Digite seu email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <i></i>
+      </div>
+
+      <div>
+        <input
+          type="password"
+          placeholder="Digite sua senha"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          required
+        />
+        <i></i>
+      </div>
+
+      <div>
+        <button type="submit">Cadastrar</button>
+      </div>
+    </form>
+  );
+}
+
+export default App;
+
